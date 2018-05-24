@@ -1,10 +1,9 @@
-import { createActions } from 'reduxsauce'
+import { createAction } from 'redux-act'
 
 /* ------------- Types and Action Creators ------------- */
 
-const { Types, Creators } = createActions({
-  startup: null,
-})
+export const startup = createAction('STARTUP')
 
-export const StartupTypes = Types
-export default Creators
+export default {
+  startup,
+}

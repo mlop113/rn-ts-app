@@ -3,7 +3,7 @@ import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
 
-import { StartupTypes } from '../Redux/Startup'
+import StartupActions from '../Redux/Startup'
 
 /* ------------- Sagas ------------- */
 
@@ -20,5 +20,5 @@ import { startup } from './Startup'
 /* ------------- Connect Types To Sagas ------------- */
 
 export default function* root() {
-  yield all([takeLatest(StartupTypes.STARTUP, startup)])
+  yield all([takeLatest(StartupActions.startup, startup)])
 }

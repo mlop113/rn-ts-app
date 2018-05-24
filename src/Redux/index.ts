@@ -16,8 +16,6 @@ export const reducers: Reducer<IApplicationState> = combineReducers<
   nav: require('./Navigation').reducer,
 })
 
-// REALLY do not like how I resorted to doing `as any` for a bunch of stuff here...
-
 export default () => {
   let finalReducers = reducers
   // If rehydration is on use persistReducer otherwise default combineReducers
@@ -38,9 +36,8 @@ export default () => {
   const { store, sagaMiddleware } = configureResult
   let { sagasManager } = configureResult
 
-  const m: any = module as any
-  if (m.hot) {
-    m.hot.accept(() => {
+  if (module.hot) {
+    module.hot.accept(() => {
       const nextRootReducer = require('./').reducers
       store.replaceReducer(nextRootReducer)
 

@@ -13,6 +13,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
     "@types/redux-saga": "^0.10.5",
+    "babel-plugin-ignite-ignore-reactotron": "^0.3.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^22.4.4",
     "jest-react-native": "^18.0.0",
@@ -20,6 +21,9 @@
     "react-native-scripts-ts": "1.14.0",
     "react-native-typescript-transformer": "^1.2.3",
     "react-test-renderer": "16.3.1",
+    "reactotron-react-native": "^2.0.0-alpha.3",
+    "reactotron-redux": "^2.0.0-alpha.3",
+    "reactotron-redux-saga": "^2.0.0-alpha.3",
     "ts-jest": "^22.4.6",
     "tslib": "^1.9.1",
     "tslint": "^5.10.0",
@@ -32,7 +36,11 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
-    "watch": "jest --watch"
+    "watch": "jest --watch",
+    "clean":
+      "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && npm cache clean --force",
+    "newclear":
+      "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && npm cache clean --force && yarn"
   },
   "jest": {
     "globals": {
@@ -58,8 +66,8 @@
     "react-navigation-redux-helpers": "^1.1.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-act": "^1.7.4",
     "redux-persist": "^5.9.1",
-    "redux-saga": "^0.16.0",
-    "reduxsauce": "^1.0.0"
+    "redux-saga": "^0.16.0"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BackHandler, Platform } from 'react-native'
-import * as Foo from 'react-navigation'
+import { addNavigationHelpers, NavigationState } from 'react-navigation'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import { AnyAction, Dispatch } from 'redux'
@@ -8,7 +8,7 @@ import { IApplicationState } from '../Redux'
 import AppNavigation from './AppNavigation'
 
 interface IPropsFromState {
-  nav: Foo.NavigationState
+  nav: NavigationState
 }
 
 interface IPropsFromRedux {
@@ -44,10 +44,9 @@ class ReduxNavigation extends React.Component<IProps> {
   }
 
   public render() {
-    console.log(Foo)
     return (
       <AppNavigation
-        navigation={Foo.addNavigationHelpers({
+        navigation={addNavigationHelpers({
           dispatch: this.props.dispatch,
           state: this.props.nav,
           addListener: createReduxBoundAddListener('root'),
