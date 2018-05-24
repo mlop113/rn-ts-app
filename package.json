@@ -31,7 +31,8 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "jest": {
     "globals": {
