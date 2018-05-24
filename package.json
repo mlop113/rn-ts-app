@@ -4,9 +4,15 @@
   "private": true,
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.109",
     "@types/react": "^16.3.14",
-    "@types/react-native": "^0.55.14",
+    "@types/react-native": "^0.55.15",
+    "@types/react-navigation": "^1.5.11",
+    "@types/react-redux": "^6.0.0",
     "@types/react-test-renderer": "^16.0.1",
+    "@types/redux": "^3.6.0",
+    "@types/redux-persist": "^4.3.1",
+    "@types/redux-saga": "^0.10.5",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^22.4.4",
     "jest-react-native": "^18.0.0",
@@ -33,14 +39,7 @@
         "useBabelrc": true
       }
     },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "preset": "react-native",
     "testMatch": [
       "**/__tests__/**/*.[tj]s?(x)",
@@ -51,7 +50,15 @@
     }
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-navigation": "^1.5.11",
+    "react-navigation-redux-helpers": "^1.1.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.9.1",
+    "redux-saga": "^0.16.0",
+    "reduxsauce": "^1.0.0"
   }
 }

@@ -1,23 +1,29 @@
-import * as React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import DebugConfig from '../Config/DebugConfig'
+import createStore from '../Redux'
+import RootContainer from './Root'
 
-export default class App extends React.Component<{}> {
+// create our store
+const store = createStore()
+
+/**
+ * Provides an entry point into our application.  Both index.ios.js and index.android.js
+ * call this component first.
+ *
+ * We create our Redux store here, put it into a provider and then bring in our
+ * RootContainer.
+ *
+ * We separate like this to play nice with React Native's hot reloading.
+ */
+class App extends Component {
   public render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.ts to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={store}>
+        <RootContainer />
+      </Provider>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    flex: 1,
-    justifyContent: 'center',
-  },
-})
+export default App
