@@ -2,13 +2,10 @@ import { NavigationState } from 'react-navigation'
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 import { Action, applyMiddleware, compose, createStore, Reducer } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { IApplicationState } from '.'
 import Config from '../Config/DebugConfig'
 import ReduxPersist from '../Config/ReduxPersist'
 import Rehydration from '../Services/Rehydration'
-
-interface IState {
-  nav: NavigationState
-}
 
 // creates the store
 export default (
@@ -23,7 +20,7 @@ export default (
   /* ------------- Navigation Middleware ------------ */
   const navigationMiddleware = createReactNavigationReduxMiddleware(
     'root',
-    (state: IState) => state.nav
+    (state: IApplicationState) => state.nav
   )
   middleware.push(navigationMiddleware)
 
