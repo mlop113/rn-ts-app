@@ -4,18 +4,13 @@ import { addNavigationHelpers, NavigationState } from 'react-navigation'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import { AnyAction, Dispatch } from 'redux'
-import { IApplicationState } from '../Redux'
+import { RootState } from '../Redux/RootReducer'
 import AppNavigation from './AppNavigation'
 
-interface IPropsFromState {
+interface IProps {
   nav: NavigationState
-}
-
-interface IPropsFromRedux {
   dispatch: Dispatch
 }
-
-type IProps = IPropsFromState & IPropsFromRedux
 
 class ReduxNavigation extends React.Component<IProps> {
   public componentWillMount() {
@@ -56,7 +51,7 @@ class ReduxNavigation extends React.Component<IProps> {
   }
 }
 
-const mapStateToProps = (state: IApplicationState): IPropsFromState => ({
+const mapStateToProps = (state: RootState) => ({
   nav: state.nav,
 })
 export default connect(mapStateToProps)(ReduxNavigation)

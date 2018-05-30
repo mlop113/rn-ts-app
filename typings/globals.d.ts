@@ -3,5 +3,5 @@ interface Console {
 }
 
 declare interface NodeModule {
-  hot?: { accept: (path: string, callback: () => void) => void }
+  hot?: { accept: (callback: () => void) => void }
 }

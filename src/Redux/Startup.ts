@@ -1,4 +1,4 @@
-import { createAction } from 'redux-act'
+import { createAction } from 'typesafe-actions'
 
 /* ------------- Types and Action Creators ------------- */
 

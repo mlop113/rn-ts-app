@@ -37,10 +37,8 @@
     "ios": "react-native run-ios",
     "test": "jest",
     "watch": "jest --watch",
-    "clean":
-      "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && npm cache clean --force",
-    "newclear":
-      "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && npm cache clean --force && yarn"
+    "clean": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && npm cache clean --force",
+    "newclear": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && npm cache clean --force && yarn"
   },
   "jest": {
     "globals": {
@@ -48,7 +46,14 @@
         "useBabelrc": true
       }
     },
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
     "preset": "react-native",
     "testMatch": [
       "**/__tests__/**/*.[tj]s?(x)",
@@ -68,6 +73,7 @@
     "redux": "^4.0.0",
     "redux-act": "^1.7.4",
     "redux-persist": "^5.9.1",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "typesafe-actions": "^2.0.4"
   }
 }

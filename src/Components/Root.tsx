@@ -7,7 +7,6 @@ import ReduxNavigation from '../Navigation/ReduxNavigation'
 import StartupActions from '../Redux/Startup'
 
 // Styles
-import { IApplicationState } from '../Redux'
 import styles from './Root.styles'
 
 interface IProps {

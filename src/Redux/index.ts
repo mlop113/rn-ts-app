@@ -1,37 +1,21 @@
 import { NavigationState } from 'react-navigation'
-import { AnyAction, combineReducers, Reducer } from 'redux'
+import { AnyAction, Reducer } from 'redux'
 import { BaseReducer, persistReducer } from 'redux-persist'
 import ReduxPersist from '../Config/ReduxPersist'
 import rootSaga from '../Sagas/'
 import configureStore from './CreateStore'
-
-export interface IApplicationState {
-  nav: NavigationState
-}
-
-/* ------------- Assemble The Reducers ------------- */
-export const reducers: Reducer<IApplicationState> = combineReducers<
-  IApplicationState
->({
-  nav: require('./Navigation').reducer,
-})
+import rootReducer from './RootReducer'
 
 export default () => {
-  let finalReducers = reducers
+  let finalReducers = rootReducer
   // If rehydration is on use persistReducer otherwise default combineReducers
   if (ReduxPersist.active) {
     const persistConfig = ReduxPersist.storeConfig
     // Seems to be a bug in redux-persist types so all this `| undefined` is needed?
-    finalReducers = persistReducer<IApplicationState | undefined, AnyAction>(
-      persistConfig,
-      reducers as BaseReducer<IApplicationState, AnyAction>
-    )
+    finalReducers = persistReducer(persistConfig, rootReducer as any)
   }
 
-  const configureResult = configureStore(
-    finalReducers as Reducer<{}, AnyAction>,
-    rootSaga
-  )
+  const configureResult = configureStore(finalReducers as any, rootSaga)
 
   const { store, sagaMiddleware } = configureResult
   let { sagasManager } = configureResult
