@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import ReduxPersist from '../Config/ReduxPersist'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import StartupActions from '../Redux/Startup'
-import { Colors } from '../Themes'
 
 interface IProps {
   startup: () => void

@@ -1,4 +1,5 @@
 import { StackNavigator } from 'react-navigation'
+import MovieDetailsScreen from '../Components/MovieDetails/'
 import MovieSearchScreen from '../Components/MovieSearch/'
 
 import styles from './Styles/NavigationStyles'
@@ -7,6 +8,7 @@ import styles from './Styles/NavigationStyles'
 const PrimaryNav = StackNavigator(
   {
     MovieSearchScreen: { screen: MovieSearchScreen },
+    MovieDetailsScreen: { screen: MovieDetailsScreen },
   },
   {
     // Default config for all screens

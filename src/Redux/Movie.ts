@@ -18,6 +18,7 @@ const actions = {
     IMovie[]
   >(),
   searchChange: createStandardAction('movies/SEARCH_CHANGE')<string>(),
+  selectedIdChange: createStandardAction('movies/SELECTED_ID_CHANGE')<number>(),
 }
 
 export type MovieAction = ActionType<typeof actions>
@@ -25,6 +26,7 @@ export type MovieAction = ActionType<typeof actions>
 export type MovieState = Readonly<{
   movies: IMovie[]
   search: string
+  selectedId: number | null
 }>
 
 export const reducer = combineReducers<MovieState, MovieAction>({
@@ -43,6 +45,15 @@ export const reducer = combineReducers<MovieState, MovieAction>({
   search: (state = '', action) => {
     switch (action.type) {
       case getType(actions.searchChange):
+        return action.payload
+
+      default:
+        return state
+    }
+  },
+  selectedId: (state = null, action) => {
+    switch (action.type) {
+      case getType(actions.selectedIdChange):
         return action.payload
 
       default:

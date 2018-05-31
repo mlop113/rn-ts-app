@@ -1,28 +1,23 @@
 import * as React from 'react'
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import Config from 'react-native-config'
-import { connect } from 'react-redux'
-import MovieActions, { IMovie } from '../../Redux/Movie'
-import { RootState } from '../../Redux/RootReducer'
-import { ApplicationStyles, Colors, Images, Metrics } from '../../Themes'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { IMovie } from '../../Redux/Movie'
+import { ApplicationStyles, Colors, Metrics } from '../../Themes'
 
 interface IProps {
   movie: IMovie
+  onPress: (id: number) => any
 }
 
 export default class ListItem extends React.Component<IProps> {
+  public onPress = () => {
+    this.props.onPress(this.props.movie.id)
+  }
+
   public render() {
     const { movie } = this.props
+    const year = movie.releaseDate.split('-')[0]
     return (
-      <TouchableOpacity style={styles.outer}>
+      <TouchableOpacity style={styles.outer} onPress={this.onPress}>
         <Image
           style={styles.image}
           resizeMode="contain"
@@ -31,12 +26,12 @@ export default class ListItem extends React.Component<IProps> {
         <View style={styles.info}>
           <Text numberOfLines={2} style={styles.titleText}>
             {movie.title}
+            <Text style={styles.date}> ({year})</Text>
           </Text>
-          <Text numberOfLines={5} style={styles.overview}>
+          <Text numberOfLines={6} style={styles.overview}>
             {movie.overview}
           </Text>
           <View style={styles.footer}>
-            <Text style={styles.date}>({movie.releaseDate})</Text>
             <View style={styles.rating}>
               <Text style={styles.popularity}>
                 {Math.round(movie.voteAverage * 10)}
@@ -65,13 +60,12 @@ const styles = StyleSheet.create({
   },
   footer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   date: {
-    opacity: 0.8,
+    opacity: 0.65,
     fontSize: 13,
     color: Colors.text,
-    flex: 1,
   },
   rating: {
     width: 25,

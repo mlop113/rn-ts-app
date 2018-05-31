@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import MovieActions, { IMovie } from '../../Redux/Movie'
 import { RootState } from '../../Redux/RootReducer'
@@ -17,6 +18,8 @@ import ListItem from './ListItem'
 interface IProps {
   searchChange: (search: string) => any
   searchMovies: (search: string) => any
+  selectedIdChange: (id: number) => any
+  navigate: (nav: any) => any
   search: string
   movies: IMovie[]
 }
@@ -30,6 +33,11 @@ class MovieSearch extends React.Component<IProps> {
     if (this.props.search) {
       this.props.searchMovies(this.props.search)
     }
+  }
+
+  public onPress = (id: number) => {
+    this.props.selectedIdChange(id)
+    this.props.navigate({ routeName: 'MovieDetailsScreen' })
   }
 
   public render() {
@@ -60,7 +68,9 @@ class MovieSearch extends React.Component<IProps> {
           contentContainerStyle={styles.moviesContainer}
         >
           {this.props.movies.map(movie => {
-            return <ListItem key={movie.id} movie={movie} />
+            return (
+              <ListItem key={movie.id} movie={movie} onPress={this.onPress} />
+            )
           })}
         </ScrollView>
       </View>
@@ -70,7 +80,9 @@ class MovieSearch extends React.Component<IProps> {
 
 const mapDispatchToProps = {
   searchChange: MovieActions.searchChange,
+  selectedIdChange: MovieActions.selectedIdChange,
   searchMovies: MovieActions.searchMovies,
+  navigate: NavigationActions.navigate,
 }
 
 const mapStateToProps = (state: RootState) => ({
@@ -88,7 +100,6 @@ const styles = StyleSheet.create({
   },
   moviesContainer: {
     flexGrow: 1,
-    padding: Metrics.baseMargin,
     margin: Metrics.baseMargin,
   },
   movies: {
@@ -104,7 +115,6 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: Metrics.baseMargin,
     margin: Metrics.baseMargin,
     marginTop: Metrics.section,
     marginBottom: 0,
