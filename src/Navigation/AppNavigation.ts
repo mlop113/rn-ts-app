@@ -1,17 +1,17 @@
 import { StackNavigator } from 'react-navigation'
-import LaunchScreen from '../Components/LaunchScreen'
+import MovieSearchScreen from '../Components/MovieSearch/'
 
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator(
   {
-    LaunchScreen: { screen: LaunchScreen },
+    MovieSearchScreen: { screen: MovieSearchScreen },
   },
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'LaunchScreen',
+    initialRouteName: 'MovieSearchScreen',
     navigationOptions: {
       headerStyle: styles.header,
     },

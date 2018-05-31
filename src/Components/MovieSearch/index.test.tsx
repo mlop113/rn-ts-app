@@ -1,9 +1,9 @@
 import * as React from 'react'
-import LaunchScreen from './LaunchScreen'
+import MovieSearchScreen from './'
 
 import * as renderer from 'react-test-renderer'
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<LaunchScreen />).toJSON()
+  const rendered = renderer.create(<MovieSearchScreen />).toJSON()
   expect(rendered).toBeTruthy()
 })

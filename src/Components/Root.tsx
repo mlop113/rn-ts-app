@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 import ReduxPersist from '../Config/ReduxPersist'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import StartupActions from '../Redux/Startup'
-
-// Styles
-import styles from './Root.styles'
+import { Colors } from '../Themes'
 
 interface IProps {
   startup: () => void
@@ -36,3 +33,9 @@ const mapDispatchToProps = {
 }
 
 export default connect<{}, IProps>(null, mapDispatchToProps)(RootContainer)
+
+const styles = StyleSheet.create({
+  applicationView: {
+    flex: 1,
+  },
+})

@@ -22,7 +22,7 @@ export default () => {
 
   if (module.hot) {
     module.hot.accept(() => {
-      const nextRootReducer = require('./').reducers
+      const nextRootReducer = require('./RootReducer').default
       store.replaceReducer(nextRootReducer)
 
       const newYieldedSagas = require('../Sagas').default
