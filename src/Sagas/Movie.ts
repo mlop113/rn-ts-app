@@ -1,7 +1,7 @@
-import { ApiErrorResponse, ApiOkResponse } from 'apisauce'
+import { ApiOkResponse } from 'apisauce'
 import Config from 'react-native-config'
 import { call, put } from 'redux-saga/effects'
-import MovieActions, { IMovie, MovieAction } from '../Redux/Movie'
+import MovieActions, { IMovie } from '../Redux/Movie'
 import { API } from '../Services/Api'
 
 export function* searchMoviesSaga(
