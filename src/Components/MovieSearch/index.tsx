@@ -83,15 +83,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch)
 const styles = StyleSheet.create({
   ...(ApplicationStyles.screen as any),
   container: {
-    paddingBottom: Metrics.baseMargin,
+    paddingBottom: 0,
     flex: 1,
   },
   moviesContainer: {
     flexGrow: 1,
-  },
-  movies: {
     padding: Metrics.baseMargin,
     margin: Metrics.baseMargin,
+  },
+  movies: {
     marginTop: 0,
   },
   input: {
